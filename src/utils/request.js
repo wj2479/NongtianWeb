@@ -5,7 +5,7 @@ import { getToken } from '@/utils/auth'
 
 // create an axios instance
 const service = axios.create({
-  baseURL: 'http://192.168.31.210:8088', // url = base url + request url
+  baseURL: 'http://localhost:8088', // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })
@@ -48,7 +48,7 @@ service.interceptors.response.use(
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== "1000") {
       Message({
-        message: res.message || 'Error111',
+        message: res.message || 'Error',
         type: 'error',
         duration: 5 * 1000
       })
@@ -72,9 +72,9 @@ service.interceptors.response.use(
     }
   },
   error => {
-    console.log('err' + error) // for debug
+    console.log(error) // for debug
     Message({
-      message: error.message,
+      message: '网络请求出错，请稍后再试',
       type: 'error',
       duration: 5 * 1000
     })
