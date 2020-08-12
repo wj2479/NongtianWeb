@@ -1,7 +1,6 @@
 import request from '@/utils/request'
 
 export function login(data) {
-  console.log('---------------', data)
   return request({
     url: '/user/login',
     method: 'get',
@@ -12,11 +11,14 @@ export function login(data) {
   })
 }
 
-export function getInfo(token) {
+// 获取用户下级区域的用户
+export function getSubAreaUser(userId) {
   return request({
-    url: '/vue-admin-template/user/info',
+    url: '/user/getSubAreaUser',
     method: 'get',
-    params: { token }
+    params: { 
+      uid: userId
+     }
   })
 }
 

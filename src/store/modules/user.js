@@ -34,9 +34,15 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
-        commit('SET_TOKEN', 'admin-token')
-        setToken('admin-token')
-        resolve()
+
+        if (response.result.role.level === 5) {
+          reject("监理登录")
+        } else {
+          localStorage.setItem('userInfo',JSON.stringify(response.result))
+          commit('SET_TOKEN', 'admin-token')
+          setToken('admin-token')
+          resolve()
+        }
       }).catch(error => {
         reject(error)
       })

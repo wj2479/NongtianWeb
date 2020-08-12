@@ -1,20 +1,40 @@
 <template>
-  <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
-  </div>
+  <div id="chartColumn" style="width: 100%; height: 400px;"></div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from "vuex";
+import echarts from "echarts";
+import { getprojectinfo } from "@/api/project";
 
 export default {
-  name: 'Dashboard',
+  name: "Dashboard",
+  data() {
+    return {
+      chartColumn: null,
+      userid: -1,
+    };
+  },
   computed: {
-    ...mapGetters([
-      'name'
-    ])
-  }
-}
+    ...mapGetters(["name"]),
+  },
+  created() {
+    let user = JSON.parse(localStorage.getItem("userInfo"));
+    this.userid = user.id;
+    this.getProjectInfo();
+  },
+
+  mounted() {},
+
+  methods: {
+    getProjectInfo() {
+      getprojectinfo(this.userid).then((res) => {
+    
+
+      });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

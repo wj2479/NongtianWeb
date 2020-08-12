@@ -83,25 +83,39 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
+        name: 'User',
+        component: () => import('@/views/user/index'),
         meta: { title: '用户管理', icon: 'user' }
       }
     ]
   },
 
-  
+
   {
-    path: '/form',
+    path: '/video',
     component: Layout,
     children: [
       {
         path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: '视频管理', icon: 'form' }
+        name: 'Video',
+        component: () => import('@/views/video/index'),
+        meta: { title: '视频管理', icon: 'table' }
       }
     ]
+  },
+
+  {
+    path: '/password',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Password',
+        component: () => import('@/views/password/index'),
+        meta: { title: '修改密码', icon: 'password' }
+      }
+    ],
+    hidden: true
   },
 
   {
