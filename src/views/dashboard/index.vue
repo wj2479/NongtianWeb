@@ -6,6 +6,7 @@
 import { mapGetters } from "vuex";
 import echarts from "echarts";
 import { getprojectinfo } from "@/api/project";
+import { getAreaList } from "@/api/user";
 
 export default {
   name: "Dashboard",
@@ -28,10 +29,7 @@ export default {
 
   methods: {
     getProjectInfo() {
-      getprojectinfo(this.userid).then((res) => {
-    
-
-      });
+      getprojectinfo(this.userid).then((res) => {});
     },
   },
 };

@@ -59,7 +59,7 @@
 
 <script>
 import { validUsername } from "@/utils/validate";
-import { login, logout, getInfo } from "@/api/user";
+import { login, logout, getAreaList } from "@/api/user";
 import { Message } from "element-ui";
 export default {
   name: "Login",
@@ -123,6 +123,7 @@ export default {
           this.$store
             .dispatch("user/login", this.loginForm)
             .then(() => {
+              this.getAreaList();
               this.$router.push({ path: this.redirect || "/" });
               this.loading = false;
             })
@@ -140,6 +141,12 @@ export default {
           console.log("error submit!!");
           return false;
         }
+      });
+    },
+    getAreaList() {
+      getAreaList().then((res) => {
+        console.log("地区：",res)
+        localStorage.setItem("areaList", JSON.stringify(res.result));
       });
     },
   },

@@ -36,6 +36,19 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
+Vue.prototype.Roles = [
+  {
+    code: 0,
+    name: "超级管理员"
+  }, {
+    code: 1,
+    name: "领导"
+  }, {
+    code: 2,
+    name: "监理"
+  }
+]
+
 new Vue({
   el: '#app',
   router,

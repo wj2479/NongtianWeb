@@ -35,7 +35,7 @@ const actions = {
       login({ username: username.trim(), password: password }).then(response => {
         const { data } = response
 
-        if (response.result.role.level === 5) {
+        if (response.result.role.code === 2) {
           reject("监理登录")
         } else {
           localStorage.setItem('userInfo',JSON.stringify(response.result))
